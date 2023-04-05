@@ -16,6 +16,9 @@ print(env.render())
 imp = input("Action:")
 
 while imp != "exit":
-    env.step(acts[imp])
+    feedback = env.step(acts[imp])
     print(env.render())
+    if feedback[1] == 20:
+        print("You did it!!")
+        break
     imp = input("Action:")
