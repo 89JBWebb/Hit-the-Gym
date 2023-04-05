@@ -10,15 +10,16 @@ acts = {
 }
 
 env = gym.make("Taxi-v3", render_mode="ansi")
-state = env.reset()
+env.reset()
 
 print(env.render())
 imp = input("Action:")
 
 while imp != "exit":
     feedback = env.step(acts[imp])
+    print(feedback)
     print(env.render())
-    if feedback[1] == 20:
+    if feedback[2]:
         print("You did it!!")
         break
     imp = input("Action:")
