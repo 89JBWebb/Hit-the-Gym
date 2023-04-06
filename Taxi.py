@@ -18,8 +18,11 @@ imp = input("Action:")
 while imp != "exit":
     feedback = env.step(acts[imp])
     print(feedback)
+    print(feedback[4]["action_mask"])
     print(env.render())
     if feedback[2]:
         print("You did it!!")
         break
     imp = input("Action:")
+    while feedback[4]["action_mask"][acts[imp]] == 0:
+        imp = input("Try Again:")
